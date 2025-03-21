@@ -2,7 +2,14 @@ import router from "next/router";
 import { useEffect, useState } from "react";
 
 export default function Agents() {
-  const [agents, setAgents] = useState([]);
+  interface Agent {
+    _id: string;
+    name: string;
+    email: string;
+    phone: string;
+  }
+
+  const [agents, setAgents] = useState<Agent[]>([]);
 
   useEffect(() => {
     fetch("/api/agents")
